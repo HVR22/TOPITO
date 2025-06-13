@@ -4,26 +4,26 @@ export default function App() {
   const [fullscreen, setFullscreen] = useState(false);
   const iframeUrl = 'unity/index.html';
 
-  const toggleFullscreen = () => {
-    setFullscreen(prev => !prev);
-  };
+  const toggleFullscreen = () => setFullscreen(prev => !prev);
 
-  // Styles
   const containerStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     backgroundColor: '#1a1a1a',
     minHeight: '100vh',
     color: '#fff',
     fontFamily: 'Arial, sans-serif',
     padding: '2rem',
     textAlign: 'center',
+    boxSizing: 'border-box',
   };
 
   const wrapperStyle = {
     position: 'relative',
     width: '100%',
     maxWidth: '960px',
-    margin: '0 auto',
-    paddingBottom: '62.5%', // 16:10 aspect ratio for embed
+    paddingBottom: '62.5%', // 16:10 aspect ratio
     backgroundColor: '#000',
     border: '5px solid #4CAF50',
     borderRadius: '12px',
@@ -75,7 +75,6 @@ export default function App() {
 
   return (
     <div style={containerStyle}>
-      {/* Normal Landing View */}
       {!fullscreen && (
         <>
           <header style={{ marginBottom: '2rem' }}>
@@ -113,13 +112,12 @@ export default function App() {
             PANTALLA COMPLETA
           </button>
 
-          <footer style={{ marginTop: '3rem', fontSize: '0.9rem', color: '#888' }}>
+          <footer style={{ fontSize: '0.9rem', color: '#888' }}>
             © 2025 | Juego desarrollado por Héctor Velarde
           </footer>
         </>
       )}
 
-      {/* Fullscreen Overlay View */}
       {fullscreen && (
         <div style={overlayStyle}>
           <iframe
